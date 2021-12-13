@@ -9,21 +9,9 @@ import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class Application {
-	static  DataIngestionService dataIngestionService;
-
-	@Autowired
-	DataIngestionService dataIngestionService1;
-
-
-
-	@PostConstruct
-	private void init() {
-		dataIngestionService = this.dataIngestionService1;
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		dataIngestionService.ingestData();
 	}
 
 }
