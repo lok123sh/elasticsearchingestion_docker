@@ -1,0 +1,35 @@
+package lk.docker.practice.utils;
+
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+
+@Service
+public class ConnectionManager {
+    RestHighLevelClient client;
+
+    @PostConstruct
+    private void createESClient(){
+        RestClientBuilder builder = RestClient.builder(
+                new HttpHost("127.0.0.1",9200,"http")
+        );
+         client = new RestHighLevelClient(builder);
+        try {
+           System.out.println("ES Server Ping "+client.ping(RequestOptions.DEFAULT));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public RestHighLevelClient getESClient(){
+        return client;
+    }
+
+}
