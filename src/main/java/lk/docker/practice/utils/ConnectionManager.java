@@ -17,12 +17,13 @@ public class ConnectionManager {
 
     @PostConstruct
     private void createESClient(){
+        System.out.println("Establishing Connection with Elasticsearch......");
         RestClientBuilder builder = RestClient.builder(
-                new HttpHost("127.0.0.1",9200,"http")
+                new HttpHost("es01",9200,"http")
         );
          client = new RestHighLevelClient(builder);
         try {
-           System.out.println("ES Server Ping "+client.ping(RequestOptions.DEFAULT));
+           System.out.println("Elasticsearch Connection status "+client.ping(RequestOptions.DEFAULT));
         } catch (IOException e) {
             e.printStackTrace();
         }
