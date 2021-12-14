@@ -10,7 +10,7 @@ Docker should be installed and running in your system.
 Test it by running **docker** command from terminal
 
 **Steps To Run**
-1. From terminal/cmd run command **docker-compose up** 
+1. From terminal/cmd run command **docker-compose up**  from specific location where docker-compose.yml is present
 2. Test ES and Kibana Status buy using url
    **http://localhost:5601/app/dev_tools**
 3. Once Kibana is running fine run docker run command.
